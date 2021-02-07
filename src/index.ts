@@ -1,3 +1,5 @@
+import './asset/style/main.scss';
+
 export class Greeter {
   constructor() {}
 
