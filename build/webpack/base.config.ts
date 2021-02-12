@@ -8,6 +8,7 @@ const config: webpack.Configuration = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, '../../dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -29,6 +30,10 @@ const config: webpack.Configuration = {
             },
           },
         ],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
