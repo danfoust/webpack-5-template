@@ -46,7 +46,7 @@ const config: webpack.Configuration = {
     extensions: ['.ts', '.js'],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
       title: 'New Project',
       template: path.resolve(__dirname, '../../src/index.html'),
