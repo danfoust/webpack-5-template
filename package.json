@@ -9,12 +9,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --progress --config build/webpack/dev.config.ts",
+    "analyze:dev": "set MODE=development && webpack --config build/webpack/analyze.config.ts",
+    "analyze:prod": "set MODE=production && webpack --config build/webpack/analyze.config.ts",
     "build:dev": "webpack --config build/webpack/dev.config.ts",
     "build:prod": "webpack --config build/webpack/prod.config.ts"
   },
   "devDependencies": {
+    "@types/css-minimizer-webpack-plugin": "^1.1.1",
+    "@types/mini-css-extract-plugin": "^1.2.2",
+    "@types/terser-webpack-plugin": "^5.0.2",
     "@types/webpack": "^4.41.26",
+    "@types/webpack-bundle-analyzer": "^3.9.1",
     "@types/webpack-dev-server": "^3.11.1",
+    "bundle-stats-webpack-plugin": "^2.6.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^1.2.0",
