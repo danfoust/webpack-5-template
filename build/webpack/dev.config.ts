@@ -7,6 +7,7 @@ const devConfig: webpack.Configuration = {
   output: {
     filename: '[name].js',
   },
+  devtool: 'source-map',
 };
 
 export default merge(baseConfig, devConfig);
