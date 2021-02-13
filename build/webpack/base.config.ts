@@ -3,6 +3,7 @@ import * as webpack from 'webpack';
 
 // Plugins
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config: webpack.Configuration = {
   entry: './src/index.ts',
@@ -44,7 +45,13 @@ const config: webpack.Configuration = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'New Project',
+      template: path.resolve(__dirname, '../../src/index.html'),
+    }),
+  ],
 };
 
 export default config;
