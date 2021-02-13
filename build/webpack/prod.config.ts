@@ -1,10 +1,9 @@
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import * as webpack from 'webpack';
 import merge from 'webpack-merge';
 import baseConfig from './base.config';
-
-// Plugins
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const prodConfig: webpack.Configuration = {
   mode: 'production',
@@ -30,7 +29,31 @@ const prodConfig: webpack.Configuration = {
     ],
   },
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+          // reference: https://github.com/terser/terser#compress-options
+          compress: {
+            arrows: true,
+            arguments: true,
+            booleans_as_integers: true,
+            dead_code: true,
+            directives: true,
+            drop_debugger: true,
+            if_return: true,
+            inline: true,
+            join_vars: true,
+            loops: true,
+            unused: true,
+          },
+        },
+      }),
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
