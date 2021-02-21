@@ -14,6 +14,24 @@ const devConfig: webpack.Configuration = {
     compress: true,
     port: 3000,
   },
+  module: {
+    rules: [
+      {
+        test: /\.s?css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('sass'),
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default merge(baseConfig, devConfig);

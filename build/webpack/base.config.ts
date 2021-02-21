@@ -19,20 +19,6 @@ const config: webpack.Configuration = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s?css$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              // Prefer `dart-sass`
-              implementation: require('sass'),
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|svg|jpe?g|gif)$/i,
         type: 'asset/resource',
       },
